@@ -18,7 +18,7 @@ export class BaseClient<P extends ParamsBase, TE extends EventMap> extends Typed
         return {
             action: action,
             useProxy: Util.parseBooleanEnv(query.get('useProxy')),
-            secure: Util.parseBooleanEnv(query.get('secure')),
+            secure: Util.parseBooleanEnv(query.get('secure')) ?? location.protocol === 'https:',
             hostname: Util.parseStringEnv(query.get('hostname')),
             port: Util.parseIntEnv(query.get('port')),
             pathname: Util.parseStringEnv(query.get('pathname')),

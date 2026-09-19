@@ -95,7 +95,7 @@ async function detectBestCodecAndEncoder(
         const { DeviceProbeClient } = await import('../../client/DeviceProbeClient');
         const probe = await DeviceProbeClient.probe(udid, {
             hostname: params.hostname || window.location.hostname,
-            port: params.port || Number.parseInt(window.location.port, 10) || 80,
+            port: params.port || Number.parseInt(window.location.port, 10) || (params.secure ? 443 : 80),
             secure: params.secure || false,
         });
         videoEncoders = probe.videoEncoders;
